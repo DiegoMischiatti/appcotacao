@@ -1,0 +1,13 @@
+package br.edu.infnet.appcotacao.model.domain;
+
+public class Vestuario {
+	public String classe;
+	public float tamanho; 
+	public boolean infantil;
+	
+	@Override
+	public String toString() {
+		return classe + ";" + tamanho + ";" + infantil;
+	}	
+}
+
