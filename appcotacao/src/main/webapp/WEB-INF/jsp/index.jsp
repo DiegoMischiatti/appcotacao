@@ -93,6 +93,23 @@
 	        <td>string</td>
 	        <td>so ano de fabricação do material analisado</td>
 	      </tr>
+	      <tr>
+	        <td>tipo</td>
+	        <td>string</td>
+	        <td>nome do produto</td>
+	      </tr>
+	      <tr>
+	        <td>valor</td>
+	        <td>float</td>
+	        <td>qual o valor do Produto</td>
+	      </tr>
+	      <tr>
+	        <td>codigo</td>
+	        <td>int</td>
+	        <td>codigo de produto</td>
+	        </tr>
+	      <tr>
+	        
 	    </tbody>
 	  </table>
 	  
@@ -121,6 +138,22 @@
 	        <td>String</td>
 	        <td>qual o tipo da composicao do material</td>
 	        </tr>
+	        <tr>
+	        <td>tipo</td>
+	        <td>string</td>
+	        <td>nome do produto</td>
+	      </tr>
+	      <tr>
+	        <td>valor</td>
+	        <td>float</td>
+	        <td>qual o valor do Produto</td>
+	      </tr>
+	      <tr>
+	        <td>codigo</td>
+	        <td>int</td>
+	        <td>codigo de produto</td>
+	        </tr>
+	        
 	    </tbody>
 	  </table>
 	        
@@ -139,6 +172,7 @@
 	        <td>String</td>
 	        <td>qual a classe do material</td>
 	      </tr>
+	      
 	      <tr>
 	        <td>Infantil</td>
 	        <td>boolean</td>
@@ -149,6 +183,21 @@
 	        <td>float</td>
 	        <td>tamanho da peca</td>
 	      </tr>
+	      <tr>
+	        <td>tipo</td>
+	        <td>string</td>
+	        <td>nome do produto</td>
+	      </tr>
+	      <tr>
+	        <td>valor</td>
+	        <td>float</td>
+	        <td>qual o valor do Produto</td>
+	      </tr>
+	      <tr>
+	        <td>codigo</td>
+	        <td>int</td>
+	        <td>codigo de produto</td>
+	        </tr>
 	    </tbody>
 	  </table>
 	  
@@ -175,7 +224,7 @@
 	      <tr>
 	        <td>codigo</td>
 	        <td>int</td>
-	        <td>qual o codigo do produto</td>
+	        <td>codigo de produto</td>
 	        </tr>
 	    </tbody>
 	  </table>

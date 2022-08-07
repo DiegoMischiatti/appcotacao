@@ -13,22 +13,16 @@ public class ClienteTeste implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("#Cliente");
 		
-		Cliente i1 = new Cliente();
-		i1.nome = "Cliente 1";
-		i1.endereco = "Endereco 1";
-		i1.email = "email 1";
+		Cliente i1 = new Cliente("Cliente 1", "Endereco 1", "email 1");
+		
 		System.out.println(i1);
 		
-		Cliente i2 = new Cliente();
-		i2.nome = "Cliente 2";
-		i2.endereco = "Endereco 1";
-		i2.email = "email 2";
+		Cliente i2 = new Cliente("Cliente 2", "Endereco 1", "email 2" );
+		
 		System.out.println(i2);
 		
-		Cliente i3 = new Cliente();
-		i3.nome = "Cliente 3";
-		i3.endereco = "Endereco 1";
-		i3.email = "email 3";
+		Cliente i3 = new Cliente("Cliente 3", "Endereco 1", "email 3");
+		
 		System.out.println(i3);
 		
 	}
