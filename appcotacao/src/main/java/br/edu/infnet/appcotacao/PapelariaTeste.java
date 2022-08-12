@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Papelaria;
+import br.edu.infnet.appcotacao.model.test.AppProduto;
 
 @Component
 public class PapelariaTeste implements ApplicationRunner{
@@ -21,6 +22,11 @@ public class PapelariaTeste implements ApplicationRunner{
 		p1.quantidade = 3.14f;
 		p1.validade = false;
 		System.out.println(p1);
+		
+		AppProduto app = new AppProduto("inf papelaria");
+		app.relatorio(p1);
+		
+		
 		
 		Papelaria p2 = new Papelaria();
 		p2.codigo = 5;

@@ -7,6 +7,11 @@ public class Cotacao {
 	private LocalDateTime data; 
 	private boolean web;
 	
+	public void impressao() {
+		System.out.println("#cotacao");
+		System.out.println(this);
+	}
+	
 	@Override
 	public String toString() {
 		return validacao + ";" + data + ";" + web;

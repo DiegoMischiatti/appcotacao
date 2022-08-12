@@ -8,5 +8,11 @@ public class Papelaria extends Produto {
 	@Override
 	public String toString() {
 		return material + ";" + quantidade + ";" + validade + ";" + super.toString();
+	}
+
+	@Override
+	public void impressao() {
+		System.out.println("#papelaria");
+		System.out.println(this);
 	}	
 }

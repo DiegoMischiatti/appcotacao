@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Informatica;
+import br.edu.infnet.appcotacao.model.test.AppProduto;
 
 @Component
 public class InformaticaTeste implements ApplicationRunner {
@@ -22,6 +23,9 @@ public class InformaticaTeste implements ApplicationRunner {
 		i1.wireless = false;
 		System.out.println(i1);
 		
+		new AppProduto("inf informatica camera").relatorio(i1);
+		
+		
 		Informatica i2 = new Informatica();
 		i2.codigo = 2;
 		i2.tipo = "roteador";
@@ -31,6 +35,9 @@ public class InformaticaTeste implements ApplicationRunner {
 		i2.wireless = true;
 		System.out.println(i2);
 		
+		new AppProduto("inf informatica roteador").relatorio(i2);
+		
+		
 		Informatica i3 = new Informatica();
 		i3.codigo = 3;
 		i3.tipo = "teclado";
@@ -39,6 +46,8 @@ public class InformaticaTeste implements ApplicationRunner {
 		i3.peso = 15f;
 		i3.wireless = false;
 		System.out.println(i3);
+		
+		new AppProduto("inf informatica teclado").relatorio(i3);
 		
 	}
 
