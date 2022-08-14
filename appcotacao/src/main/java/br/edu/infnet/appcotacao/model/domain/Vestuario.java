@@ -1,9 +1,9 @@
 package br.edu.infnet.appcotacao.model.domain;
 
 public class Vestuario extends Produto {
-	public String classe;
-	public float tamanho; 
-	public boolean infantil;
+	private String classe;
+	private float tamanho; 
+	private boolean infantil;
 	
 	@Override
 	public float CalcularValordecompra() {
@@ -12,7 +12,7 @@ public class Vestuario extends Produto {
 		
 		float valorInfantil = infantil ? 0 : 30; 
 		
-		return valor + valorTamanho + valorInfantil;
+		return getValor() + valorTamanho + valorInfantil;
 	}
 	
 	@Override
@@ -24,6 +24,30 @@ public class Vestuario extends Produto {
 	public void impressao() {
 		System.out.println("#Vestuario");
 		System.out.println(this);
-	}	
+	}
+	
+	public String getClasse() {
+		return classe;
+	}
+
+	public void setClasse(String material) {
+		this.classe = material;
+	}
+
+	public float getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(float tamanho) {
+		this.tamanho = tamanho;
+	}
+
+	public boolean isInfantil() {
+		return infantil;
+	}
+
+	public void setInfantil(boolean infantil) {
+		this.infantil = infantil;
+	}
 }
 

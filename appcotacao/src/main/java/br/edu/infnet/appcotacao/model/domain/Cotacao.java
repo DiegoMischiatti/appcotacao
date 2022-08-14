@@ -2,11 +2,15 @@ package br.edu.infnet.appcotacao.model.domain;
 
 import java.time.LocalDateTime;
 
-public class Cotacao {
+import br.edu.infnet.appcotacao.interfaces.IPrinter;
+
+public class Cotacao implements IPrinter {
 	private String validacao;
 	private LocalDateTime data; 
 	private boolean web;
 	
+	
+	@Override
 	public void impressao() {
 		System.out.println("#cotacao");
 		System.out.println(this);

@@ -5,49 +5,49 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Informatica;
-import br.edu.infnet.appcotacao.model.test.AppProduto;
+import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
 public class InformaticaTeste implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("#Informatica");
+		System.out.println("####Informatica");
 		
 		Informatica i1 = new Informatica();
-		i1.codigo = 1;
-		i1.tipo = "camera";
-		i1.valor = 500;
-		i1.ano = "2000";
-		i1.peso = 3.14f;
-		i1.wireless = false;
+		i1.setCodigo(1);
+		i1.setTipo("camera");
+		i1.setValor(500);
+		i1.setAno("2000");
+		i1.setPeso(3.14f);
+		i1.setWireless(false);
 		System.out.println(i1);
 		
-		new AppProduto("inf informatica camera").relatorio(i1);
+		AppImpressao.relatorio("inf informatica camera", i1);
 		
 		
 		Informatica i2 = new Informatica();
-		i2.codigo = 2;
-		i2.tipo = "roteador";
-		i2.valor = 1000;
-		i2.ano = "2022";
-		i2.peso = 10f;
-		i2.wireless = true;
+		i2.setCodigo(2);
+		i2.setTipo("roteador");
+		i2.setValor(1000);
+		i2.setAno("2022");
+		i2.setPeso(10f);
+		i2.setWireless(true);
 		System.out.println(i2);
 		
-		new AppProduto("inf informatica roteador").relatorio(i2);
+		AppImpressao.relatorio("inf informatica roteador", i2);
 		
 		
 		Informatica i3 = new Informatica();
-		i3.codigo = 3;
-		i3.tipo = "teclado";
-		i3.valor = 1500;
-		i3.ano = "2015";
-		i3.peso = 15f;
-		i3.wireless = false;
+		i3.setCodigo(3);
+		i3.setTipo("teclado");
+		i3.setValor(1500);
+		i3.setAno("2015");
+		i3.setPeso(15f);
+		i3.setWireless(false);
 		System.out.println(i3);
 		
-		new AppProduto("inf informatica teclado").relatorio(i3);
+		AppImpressao.relatorio("inf informatica teclado", i3);
 		
 	}
 

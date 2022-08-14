@@ -1,6 +1,8 @@
 package br.edu.infnet.appcotacao.model.domain;
 
-public class Cliente {
+import br.edu.infnet.appcotacao.interfaces.IPrinter;
+
+public class Cliente implements IPrinter{
 	public String nome;
 	public String endereco; 
 	public String email;
@@ -12,15 +14,17 @@ public class Cliente {
 	
 	}
 	
-	public void impressao() {
-		System.out.println("#cliente");
-		System.out.println(this);
-	}
-	
 	
 	@Override
 	public String toString() {
 		return nome + ";" + endereco + ";" + email;
+	}
+
+	@Override
+	public void impressao() {
+		System.out.println("#cliente");
+		System.out.println(this);
+		
 	}	
 }
 
