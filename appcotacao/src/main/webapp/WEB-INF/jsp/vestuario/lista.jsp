@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -33,40 +34,32 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	        <th>ID</th>
 	        <th>Tipo</th>
 	        <th>Valor</th>
 	        <th>Codigo</th>
 	        <th>Classe</th>
 	        <th>Tamanho</th>
 	        <th>infantil</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <th>sueter</th>
-	        <th>R$300</th>
-	        <th>7</th>
-	        <th>noite</th>
-	        <th>G</th>
-	        <th>adulto</th>
-	      </tr>
-	      <tr>
-	        <th>pijama</th>
-	        <th>R$ 200r</th>
-	        <th>2</th>
-	        <th>casa</th>
-	        <th>M</th>
-	        <th>infantil</th>
-	      </tr>
-	      <tr>
-	        <th>camera</th>
-	        <th>R$ 150</th>
-	        <th>3</th>
-	        <th>0.3</th>
-	        <th>sem Wireless</th>
-	        <th>2000</th>
-	      </tr>     
-	    </tbody>
+				<c:forEach var="v" items="${listagem}">
+				
+					<tr>
+						<td>${v.id}</td>
+						<td>${v.tipo}</td>
+						<td>${v.valor}</td>
+						<td>${v.codigo}</td>
+						<td>${v.classe}</td>
+						<td>${v.tamanho}</td>
+						<td>${v.infantil}</td>
+						<td><a href="/vestuario/${v.id}/excluir">excluir</a> </td>
+					</tr>
+					
+				</c:forEach>
+			</tbody>
 	  </table>
 	  
 	</div>

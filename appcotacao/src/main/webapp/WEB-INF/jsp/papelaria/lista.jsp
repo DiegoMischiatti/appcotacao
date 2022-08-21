@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -33,40 +34,32 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	        <th>Id</th>
+	        <th>Codigo</th>
 	        <th>Tipo</th>
 	        <th>Valor</th>
-	        <th>Codigo</th>
 	        <th>Quantidade</th>
 	        <th>Validade</th>
 	        <th>Material</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <th>Caderno</th>
-	        <th>R$ 10</th>
-	        <th>4</th>
-	        <th>1</th>
-	        <th>indetermidada</th>
-	        <th>papel</th>
-	      </tr>
-	      <tr>
-	        <th>Quadro</th>
-	        <th>R$ 200r</th>
-	        <th>5</th>
-	        <th>1</th>
-	        <th>indeterminada</th>
-	        <th>madeira</th>
-	      </tr>
-	      <tr>
-	        <th>pincel</th>
-	        <th>R$ 30</th>
-	        <th>6</th>
-	        <th>6</th>
-	        <th>validade de 1 ano</th>
-	        <th>plastico</th>
-	      </tr>     
-	    </tbody>
+				<c:forEach var="p" items="${listagem}">
+				
+					<tr>
+						<td>${p.id}</td>
+						<td>${p.codigo}</td>
+						<td>${p.tipo}</td>
+						<td>${p.valor}</td>
+						<td>${p.quantidade}</td>
+						<td>${p.validade}</td>
+						<td>${p.material}</td>
+						<td><a href="/papelaria/${p.id}/excluir">excluir</a> </td>
+					</tr>
+					
+				</c:forEach>
+			</tbody>
 	  </table>
 	  
 	</div>

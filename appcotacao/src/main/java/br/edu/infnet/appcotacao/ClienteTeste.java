@@ -14,24 +14,14 @@ public class ClienteTeste implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("####Cliente");
 		
+		Cliente cl1 = new Cliente("Cliente 1", "Endereco 1", "email 1");
+		AppImpressao.relatorio("inf cliente cliente 1", cl1);
 		
+		Cliente cl2 = new Cliente("Cliente 2", "Endereco 1", "email 2" );
+		AppImpressao.relatorio("inf cliente cliente 2", cl2);
 		
-		Cliente i1 = new Cliente("Cliente 1", "Endereco 1", "email 1");
-		
-		
-		AppImpressao.relatorio("inf cliente cliente 1", i1);
-		
-		
-		Cliente i2 = new Cliente("Cliente 2", "Endereco 1", "email 2" );
-		
-		
-		AppImpressao.relatorio("inf cliente cliente 2", i2);
-		
-		
-		Cliente i3 = new Cliente("Cliente 3", "Endereco 1", "email 3");
-		
-		
-		AppImpressao.relatorio("inf cliente cliente 3", i3);
+		Cliente cl3 = new Cliente("Cliente 3", "Endereco 1", "email 3");
+		AppImpressao.relatorio("inf cliente cliente 3", cl3);
 		
 	}
 

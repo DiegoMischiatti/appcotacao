@@ -4,8 +4,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appcotacao.controller.VestuarioController;
 import br.edu.infnet.appcotacao.model.domain.Vestuario;
-import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
 public class VestuarioTeste implements ApplicationRunner{
@@ -23,8 +23,7 @@ public class VestuarioTeste implements ApplicationRunner{
 		v1.setTamanho(5f);
 		v1.setInfantil(false);
 		System.out.println(v1);
-		
-		AppImpressao.relatorio("inf informatica camisa", v1);
+		VestuarioController.incluir(v1);
 		
 		Vestuario v2 = new Vestuario();
 		v2.setCodigo(8);
@@ -34,9 +33,8 @@ public class VestuarioTeste implements ApplicationRunner{
 		v2.setTamanho(6f);
 		v2.setInfantil(true);
 		System.out.println(v2);
-		
-		AppImpressao.relatorio("inf informatica terno", v2);
-		
+		VestuarioController.incluir(v1);
+	
 		Vestuario v3 = new Vestuario();
 		v3.setCodigo(9);
 		v3.setTipo("calca");
@@ -45,8 +43,8 @@ public class VestuarioTeste implements ApplicationRunner{
 		v3.setTamanho(7f);
 		v3.setInfantil(false);
 		System.out.println(v3);
+		VestuarioController.incluir(v3);
 		
-		AppImpressao.relatorio("inf informatica calca", v3);
 		
 	}
 

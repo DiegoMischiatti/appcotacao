@@ -4,8 +4,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appcotacao.controller.InformaticaController;
+import br.edu.infnet.appcotacao.controller.PapelariaController;
 import br.edu.infnet.appcotacao.model.domain.Papelaria;
-import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
 public class PapelariaTeste implements ApplicationRunner{
@@ -22,8 +23,7 @@ public class PapelariaTeste implements ApplicationRunner{
 		p1.setQuantidade(3.14f);
 		p1.setValidade(false);
 		System.out.println(p1);
-		
-		AppImpressao.relatorio("inf informatica caneta", p1);
+		PapelariaController.incluir(p1);
 		
 		Papelaria p2 = new Papelaria();
 		p2.setCodigo(5);
@@ -33,8 +33,7 @@ public class PapelariaTeste implements ApplicationRunner{
 		p2.setQuantidade(10f);
 		p2.setValidade(true);
 		System.out.println(p2);
-		
-		AppImpressao.relatorio("inf informatica quadro", p2);
+		PapelariaController.incluir(p2);
 		
 		Papelaria p3 = new Papelaria();
 		p3.setCodigo(6);
@@ -44,8 +43,9 @@ public class PapelariaTeste implements ApplicationRunner{
 		p3.setQuantidade(15f);
 		p3.setValidade(false);
 		System.out.println(p3);
+		PapelariaController.incluir(p3);
 		
-		AppImpressao.relatorio("inf informatica caderno", p3);
+		
 	}
 	
 }	

@@ -3,9 +3,11 @@ package br.edu.infnet.appcotacao.model.domain;
 import br.edu.infnet.appcotacao.interfaces.IPrinter;
 
 public class Cliente implements IPrinter{
-	public String nome;
-	public String endereco; 
-	public String email;
+	
+	private Integer id;
+	private String nome;
+	private String endereco; 
+	private String email;
 	
 	public Cliente(String nome , String endereco, String email) {
 		this.nome = nome;
@@ -25,6 +27,16 @@ public class Cliente implements IPrinter{
 		System.out.println("#cliente");
 		System.out.println(this);
 		
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}	
 }
 
