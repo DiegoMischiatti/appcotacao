@@ -16,12 +16,9 @@
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active" href="/">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
-					href="/informatica/lista">Informatica</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/papelaria/lista">Papelaria</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/vestuario/lista">Vestuario</a></li>
+				<li class="nav-item"><a class="nav-link" href="/informatica/lista">Informatica</a></li>
+				<li class="nav-item"><a class="nav-link" href="/papelaria/lista">Papelaria</a></li>
+				<li class="nav-item"><a class="nav-link" href="/vestuario/lista">Vestuario</a></li>
 				<li class="nav-item"><a class="nav-link" href="/produto/lista">Produto</a></li>
 				<li class="nav-item"><a class="nav-link" href="/cotacao/lista">Cotacao</a></li>
 				<li class="nav-item"><a class="nav-link" href="/cliente/lista">Cliente</a></li>
@@ -41,9 +38,9 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Codigo</th>
 					<th>Tipo</th>
 					<th>Valor</th>
+					<th>Codigo</th>
 					<th>Ano</th>
 					<th>Peso</th>
 					<th>Wireless</th>
@@ -55,9 +52,9 @@
 				
 					<tr>
 						<td>${i.id}</td>
-						<td>${i.codigo}</td>
 						<td>${i.tipo}</td>
 						<td>${i.valor}</td>
+						<td>${i.codigo}</td>
 						<td>${i.ano}</td>
 						<td>${i.peso}</td>
 						<td>${i.wireless}</td>

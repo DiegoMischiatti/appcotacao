@@ -1,6 +1,7 @@
 package br.edu.infnet.appcotacao.model.domain;
 
 import br.edu.infnet.appcotacao.interfaces.IPrinter;
+import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
 
 public class Cliente implements IPrinter{
 	
@@ -9,7 +10,16 @@ public class Cliente implements IPrinter{
 	private String endereco; 
 	private String email;
 	
-	public Cliente(String nome , String endereco, String email) {
+	public Cliente(String nome , String endereco, String email) throws NomeInvalidoException {
+		
+		if(endereco ==null){
+			throw new NomeInvalidoException("nome nulo");
+		}
+		
+		if(endereco.isEmpty()){
+			throw new NomeInvalidoException("nome sem preenchimento");
+		}
+		
 		this.nome = nome;
 		this.endereco = endereco;
 		this.email = email;
@@ -37,6 +47,38 @@ public class Cliente implements IPrinter{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}	
+	
+	
 }
 

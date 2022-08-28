@@ -1,0 +1,3 @@
+Cotacao 1; false; Cliente 1; Endereco 1; email 1
+Cotacao 2; false; Cliente 2; Endereco 2; email 2
+Cotacao 3; false; Cliente 3; Endereco 3; email 3

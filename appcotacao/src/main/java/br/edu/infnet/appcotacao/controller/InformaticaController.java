@@ -24,7 +24,7 @@ public class InformaticaController{
 		
 		mapaInformatica.put(informatica.getId(), informatica);
 		
-		AppImpressao.relatorio("inf informatica " + informatica.getTipo() + "incluido", informatica);
+		AppImpressao.relatorio("inf informatica " + informatica.getAno() + "incluido", informatica);
 
 	}
 	
@@ -46,7 +46,6 @@ public class InformaticaController{
 		return "informatica/lista";
 		
 	}
-	
 	@GetMapping(value = "/informatica/{id}/excluir")
 	public String exclusao(@PathVariable Integer id) {
 		
@@ -55,4 +54,5 @@ public class InformaticaController{
 		return "redirect:/informatica/lista";
 		
 	}	
+
 }

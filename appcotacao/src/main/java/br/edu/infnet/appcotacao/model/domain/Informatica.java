@@ -1,5 +1,6 @@
 package br.edu.infnet.appcotacao.model.domain;
 
+import br.edu.infnet.appcotacao.model.domain.exceptions.PesoInformaticaInvalidoException;
 
 public class Informatica extends Produto {
 	
@@ -8,7 +9,13 @@ public class Informatica extends Produto {
 	private boolean wireless;
 	
 	@Override
-	public float CalcularValordecompra() {
+	public float CalcularValordecompra() throws PesoInformaticaInvalidoException {
+		
+		
+		if(peso < 2) {
+			throw new PesoInformaticaInvalidoException("o peso ("+peso+")esta invalido, digite um peso maior que 2 kg");
+		}
+		
 		
 		float valorWireless = wireless ? 50 : 0;
 		

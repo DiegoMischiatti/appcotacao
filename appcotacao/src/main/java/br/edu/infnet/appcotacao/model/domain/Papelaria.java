@@ -1,5 +1,6 @@
 package br.edu.infnet.appcotacao.model.domain;
 
+import br.edu.infnet.appcotacao.model.domain.exceptions.QuantidadePapelariaInvalidoException;
 
 public class Papelaria extends Produto {
 	
@@ -43,8 +44,13 @@ public class Papelaria extends Produto {
 	}
 
 	@Override
-	public float CalcularValordecompra() {
+	public float CalcularValordecompra() throws QuantidadePapelariaInvalidoException{
 		
-		return getValor() / 2;
+		if(quantidade <= 0) {
+			throw new QuantidadePapelariaInvalidoException("a quantidade ("+quantidade+") esta invalida, digite uma quantidade maior que zero");
+		}
+		
+		float valorQuantidade = quantidade * 2;
+		return getValor() / 2 + valorQuantidade;
 	}
 }

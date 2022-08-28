@@ -1,12 +1,18 @@
 package br.edu.infnet.appcotacao.model.domain;
 
+import br.edu.infnet.appcotacao.model.domain.exceptions.TamanhoVestuarioInvalidoException;
+
 public class Vestuario extends Produto {
 	private String classe;
 	private float tamanho; 
 	private boolean infantil;
 	
 	@Override
-	public float CalcularValordecompra() {
+	public float CalcularValordecompra() throws TamanhoVestuarioInvalidoException {
+		
+		if(tamanho < 0 || tamanho > 5) {
+			throw new TamanhoVestuarioInvalidoException("o tamanho ("+tamanho+") esta invalido, digite um tamanho maior que zero e menor que 5");
+		}
 		
 		float valorTamanho = tamanho * 2; 
 		
