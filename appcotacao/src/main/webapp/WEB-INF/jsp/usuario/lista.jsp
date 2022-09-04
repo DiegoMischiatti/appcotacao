@@ -13,37 +13,29 @@
 <body>
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
+
 	<div class="container mt-3">
-		<h2>AppCotacao</h2>
-		<p>Projeto Para Cotacao de Fretes</p>
 
-
-		<h3>Classe Cotacao</h3>
+		<h3>Cadastramento de usuario</h3>
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Validacao</th>
-					<th>Data</th>
-					<th>Web</th>
-					<th>Cliente</th>
-					<th>Produto</th>
-					
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Senha</th>
 					<th></th>
+				
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="c" items="${listagem}">
+				<c:forEach var="u" items="${listagem}">
 				
 					<tr>
-						<td>${c.id}</td>
-						<td>${c.validacao}</td>
-						<td>${c.data}</td>
-						<td>${c.web}</td>
-						<td>${c.cliente.nome}</td>
-						<td>${c.produtos.size()}</td>
+						<td>${u.nome}</td>
+						<td>${u.email}</td>
+						<td>${u.senha}</td>
+						<td><a href="/usuario/${u.email}/excluir">excluir</a> </td>
 						
-						<td><a href="/cotacao/${c.id}/excluir">excluir</a> </td>
 					</tr>
 					
 				</c:forEach>
