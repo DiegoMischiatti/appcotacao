@@ -1,0 +1,3 @@
+diego@diego.com;diego;123
+maria@maria.com;maria;123
+joao@joao.com;joao;123

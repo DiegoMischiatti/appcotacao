@@ -1,13 +1,13 @@
 package br.edu.infnet.appcotacao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appcotacao.controller.InformaticaController;
-import br.edu.infnet.appcotacao.controller.PapelariaController;
 import br.edu.infnet.appcotacao.model.domain.Papelaria;
 import br.edu.infnet.appcotacao.model.domain.exceptions.QuantidadePapelariaInvalidoException;
+import br.edu.infnet.appcotacao.model.service.PapelariaService;
 import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 
@@ -15,6 +15,10 @@ import br.edu.infnet.appcotacao.model.test.AppImpressao;
 @Component
 public class PapelariaTeste implements ApplicationRunner {
 
+@Autowired
+	
+	private PapelariaService papelariaService;
+	
 	@Override
 	public void run(ApplicationArguments args) {
 		System.out.println("####Papelaria");
@@ -27,7 +31,7 @@ public class PapelariaTeste implements ApplicationRunner {
 			p1.setMaterial("plástico");
 			p1.setQuantidade(3.14f);
 			p1.setValidade(false);
-			PapelariaController.incluir(p1);
+			papelariaService.incluir(p1);
 			System.out.println("CalcularValordecompra: " + p1.CalcularValordecompra());
 			AppImpressao.relatorio("cotacao papelaria 1", p1);
 		} catch (QuantidadePapelariaInvalidoException e) {
@@ -42,7 +46,7 @@ public class PapelariaTeste implements ApplicationRunner {
 			p2.setMaterial("madeira");
 			p2.setQuantidade(10f);
 			p2.setValidade(true);
-			PapelariaController.incluir(p2);
+			papelariaService.incluir(p2);
 			System.out.println("CalcularValordecompra: " + p2.CalcularValordecompra());
 			AppImpressao.relatorio("cotacao papelaria 2", p2);
 		} catch (QuantidadePapelariaInvalidoException e) {
@@ -57,7 +61,7 @@ public class PapelariaTeste implements ApplicationRunner {
 			p3.setMaterial("papel");
 			p3.setQuantidade(15f);
 			p3.setValidade(false);
-			PapelariaController.incluir(p3);
+			papelariaService.incluir(p3);
 			System.out.println("CalcularValordecompra: " + p3.CalcularValordecompra());
 			AppImpressao.relatorio("cotacao papelaria 3", p3);
 		} catch (QuantidadePapelariaInvalidoException e) {
@@ -72,6 +76,7 @@ public class PapelariaTeste implements ApplicationRunner {
 			p4.setMaterial("papel");
 			p4.setQuantidade(0);
 			p4.setValidade(false);
+			papelariaService.incluir(p4);
 			System.out.println("CalcularValordecompra: " + p4.CalcularValordecompra());
 			AppImpressao.relatorio("cotacao papelaria 4", p4);
 		} catch (QuantidadePapelariaInvalidoException e) {
@@ -86,6 +91,7 @@ public class PapelariaTeste implements ApplicationRunner {
 			p5.setMaterial("papel");
 			p5.setQuantidade(-10);
 			p5.setValidade(false);
+			papelariaService.incluir(p5);
 			System.out.println("CalcularValordecompra: " + p5.CalcularValordecompra());
 			AppImpressao.relatorio("cotacao papelaria 5", p5);
 		} catch (QuantidadePapelariaInvalidoException e) {

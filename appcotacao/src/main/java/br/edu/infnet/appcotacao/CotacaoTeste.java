@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -18,14 +19,18 @@ import br.edu.infnet.appcotacao.model.domain.Informatica;
 import br.edu.infnet.appcotacao.model.domain.Papelaria;
 import br.edu.infnet.appcotacao.model.domain.Produto;
 import br.edu.infnet.appcotacao.model.domain.Vestuario;
-import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
 import br.edu.infnet.appcotacao.model.domain.exceptions.ClienteNuloException;
 import br.edu.infnet.appcotacao.model.domain.exceptions.CotacaoSemProdutoException;
-import br.edu.infnet.appcotacao.model.test.AppImpressao;
+import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
+import br.edu.infnet.appcotacao.model.service.CotacaoService;
 
 @Component
 public class CotacaoTeste implements ApplicationRunner {
 
+@Autowired
+	
+	private CotacaoService cotacaoService;
+	
 	@Override
 	public void run(ApplicationArguments args){
 		System.out.println("####Cotacao");
@@ -85,7 +90,7 @@ public class CotacaoTeste implements ApplicationRunner {
 						Cotacao c1 = new Cotacao(cl1, listaProdutoC1);
 						c1.setValidacao (campos[0]);
 						c1.setWeb(Boolean.valueOf(campos[1]));
-						CotacaoController.incluir(c1);
+						cotacaoService.incluir(c1);
 					} catch (NomeInvalidoException | ClienteNuloException | CotacaoSemProdutoException e) {
 						System.out.println("erro cotacao" + e.getMessage());
 					} 	

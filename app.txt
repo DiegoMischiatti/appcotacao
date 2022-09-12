@@ -1,0 +1,29 @@
+P;AppCotacao;Projeto para realizar cotacao
+C;Usuario
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
+C;Cotacao
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
+C;Cliente
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
+C;Produto
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
+C;Informatica
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
+C;Papelaria
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
+C;Vestuario
+A;nome;String;O nome do usuario
+A;email;String;O email do usuario
+A;senha;String;A senha do usuario
