@@ -13,39 +13,37 @@
 
 
 	<div class="container mt-3">
-	  <h2>AppCotacao</h2>
-	  <p>Projeto Para Cotacao de Fretes</p>   
-	  
-	  
-	  <h3>Classe Cliente</h3>        
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th>Atributo</th>
-	        <th>Tipo</th>
-	        <th>Descricao</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>nome</td>
-	        <td>String</td>
-	        <td>nome da empresa</td>
-	      </tr>
-	      <tr>
-	        <td>Endereco</td>
-	        <td>String</td>
-	        <td>Endereco da empresa</td>
-	      </tr>
-	      <tr>
-	        <td>email</td>
-	        <td>String</td>
-	        <td>email da empresa</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  
-	  
+
+		<h3>Cadastramento de cliente</h3>
+		
+		<h4><a href="/cliente">novo cliente</a></h4>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>endereco</th>
+					<th></th>
+				
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="cl" items="${listagem}">
+				
+					<tr>
+					    <td>${cl.id}</td>
+						<td>${cl.nome}</td>
+						<td>${cl.email}</td>
+						<td>${cl.endereco}</td>
+						<td><a href="/cliente/${cl.id}/excluir">excluir</a> </td>
+						
+					</tr>
+					
+				</c:forEach>
+			</tbody>
+		</table>
+
 	</div>
 </body>
 </html>

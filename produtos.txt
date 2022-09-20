@@ -1,0 +1,9 @@
+I;1;10;123;2001;1;true
+I;2;15;12;2002;2;true
+I;3;120;1;2003;3;false
+V;1;10;123;pijama;1;true
+V;2;15;12;festa;2;true
+V;3;120;1;camping;3;false
+P;1;10;123;plastico;1;true
+P;2;15;12;madeira;2;true
+P;3;120;1;papel;10;false

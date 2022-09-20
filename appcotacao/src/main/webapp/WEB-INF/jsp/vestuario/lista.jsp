@@ -18,7 +18,8 @@
 	  <h2>AppCotacao</h2>
 	  <p>Projeto Para Cotacao de Fretes</p>   
 	  
-	  <h3>Classe Vestuario</h3>
+	  <h3>Cadastramento Vestuario</h3>
+	  <h4><a href="/vestuario">novo vestuario</a></h4>
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>

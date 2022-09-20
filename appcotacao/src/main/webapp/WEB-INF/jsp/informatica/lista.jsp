@@ -19,7 +19,9 @@
 		<p>Projeto Para Cotacao de Fretes</p>
 
 
-		<h3>Classe Informatica</h3>
+		<h3>cadastramento Informatica</h3>
+		<h4><a href="/informatica">novo informatica</a></h4>
+		
 		<table class="table table-striped">
 			<thead>
 				<tr>

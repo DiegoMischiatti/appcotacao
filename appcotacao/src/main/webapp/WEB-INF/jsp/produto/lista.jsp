@@ -16,7 +16,7 @@
 	  <h2>AppCotacao</h2>
 	  <p>Projeto Para Cotacao de Fretes</p>   
 	  
-	  <h3>Classe Produto</h3>        
+	  <h3>cadastramento Produto</h3>        
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>

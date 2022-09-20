@@ -12,11 +12,11 @@ public class Cliente implements IPrinter{
 	
 	public Cliente(String nome , String endereco, String email) throws NomeInvalidoException {
 		
-		if(endereco ==null){
+		if(nome ==null){
 			throw new NomeInvalidoException("nome nulo");
 		}
 		
-		if(endereco.isEmpty()){
+		if(nome.isEmpty()){
 			throw new NomeInvalidoException("nome sem preenchimento");
 		}
 		

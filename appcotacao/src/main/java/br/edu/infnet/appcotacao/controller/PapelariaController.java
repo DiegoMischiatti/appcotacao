@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.infnet.appcotacao.model.domain.Informatica;
 import br.edu.infnet.appcotacao.model.domain.Papelaria;
 import br.edu.infnet.appcotacao.model.service.InformaticaService;
 import br.edu.infnet.appcotacao.model.service.PapelariaService;
@@ -30,6 +32,19 @@ public class PapelariaController{
 		return "papelaria/lista";
 		
 	}
+	
+	@GetMapping (value = "/papelaria")
+	public String telaCadastro() {
+    	 return "papelaria/cadastro";
+     }
+	
+	@PostMapping (value = "/papelaria/incluir")
+	public String incluir(Papelaria papelaria) {
+    	 
+		papelariaService.incluir(papelaria);
+		
+		return "redirect:/papelaria/lista";
+     }
 	
 	@GetMapping(value = "/papelaria/{id}/excluir")
 	public String exclusao(@PathVariable Integer id) {

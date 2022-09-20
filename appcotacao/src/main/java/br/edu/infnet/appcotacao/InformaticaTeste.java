@@ -1,5 +1,10 @@
 package br.edu.infnet.appcotacao;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,66 +26,56 @@ public class InformaticaTeste implements ApplicationRunner {
 	public void run(ApplicationArguments args) {
 		System.out.println("####Informatica");
 
-		try {
-			Informatica i1 = new Informatica();
-			i1.setCodigo(1);
-			i1.setTipo("camera");
-			i1.setValor(500);
-			i1.setAno("2000");
-			i1.setPeso(3);
-			i1.setWireless(false);
-			informaticaService.incluir(i1);
-			System.out.println("CalcularValordecompra: " + i1.CalcularValordecompra());
-			AppImpressao.relatorio("cotacao informatica 1", i1);
-		} catch (PesoInformaticaInvalidoException e) {
-			System.out.println("erro informatica" + e.getMessage());
-
-		}
+		String dir = "c:/dev/";
+		String arq = "produtos.txt";
 
 		try {
-			Informatica i2 = new Informatica();
-			i2.setCodigo(2);
-			i2.setTipo("roteador");
-			i2.setValor(1000);
-			i2.setAno("2022");
-			i2.setPeso(10);
-			i2.setWireless(true);
-			informaticaService.incluir(i2);
-			System.out.println("CalcularValordecompra: " + i2.CalcularValordecompra());
-			AppImpressao.relatorio("cotacao informatica 2", i2);
-		} catch (PesoInformaticaInvalidoException e) {
-			System.out.println("erro informatica" + e.getMessage());
-		}
 
-		try {
-			Informatica i3 = new Informatica();
-			i3.setCodigo(3);
-			i3.setTipo("teclado");
-			i3.setValor(1500);
-			i3.setAno("2015");
-			i3.setPeso(15);
-			i3.setWireless(false);
-			informaticaService.incluir(i3);
-			System.out.println("CalcularValordecompra: " + i3.CalcularValordecompra());
-			AppImpressao.relatorio("informatica 3", i3);
-		} catch (PesoInformaticaInvalidoException e) {
-			System.out.println("erro informatica" + e.getMessage());
+			try {
+			
+				FileReader fileReader = new FileReader(dir+arq);
+				BufferedReader leitura = new BufferedReader(fileReader);
+				
+				
+				String linha = leitura.readLine();
+				while(linha != null) {
+					
+					String[] campos = linha.split(";");
+					
+					if("I".equalsIgnoreCase(campos[0])) {
+						
+						try {
+							Informatica i1 = new Informatica();
+							i1.setCodigo(Integer.valueOf(campos[1]));
+							i1.setTipo(campos[2]);
+							i1.setValor(Float.valueOf(campos[3]));
+							i1.setAno(campos[4]);
+							i1.setPeso(Float.valueOf(campos[5]));
+							i1.setWireless(Boolean.valueOf(campos[6]));
+							informaticaService.incluir(i1);
+							System.out.println("CalcularValordecompra: " + i1.CalcularValordecompra());
+							AppImpressao.relatorio("cotacao informatica 1", i1);
+						} catch (PesoInformaticaInvalidoException e) {
+							System.out.println("erro informatica" + e.getMessage());
+					
+						}
+					}
+					linha = leitura.readLine();
+				}
+				
+				leitura.close();
+				fileReader.close();
+				
+				
+			} catch (FileNotFoundException e) {
+				System.out.println("ERRO ARQUIVO NAO EXISTE");
+			} catch (IOException e) {
+				System.out.println("PROBLEMA FECHAMENTO");
+			}
+		} finally {
+			System.out.println("finalizado");
 		}
-
-		try {
-			Informatica i4 = new Informatica();
-			i4.setCodigo(3);
-			i4.setTipo("teclado");
-			i4.setValor(1500);
-			i4.setAno("2015");
-			i4.setPeso(1);
-			i4.setWireless(false);
-			informaticaService.incluir(i4);
-			System.out.println("CalcularValordecompra: " + i4.CalcularValordecompra());
-			AppImpressao.relatorio("cotacao papelaria 1", i4);
-		} catch (PesoInformaticaInvalidoException e) {
-			System.out.println("erro informatica" + e.getMessage());
-		}
+		
 	}
 
 }

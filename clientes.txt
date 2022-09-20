@@ -1,0 +1,3 @@
+diego;rua 1;diego@diego
+Maria;rua 2;Maria@Maria
+joao;rua 3;joao@joao

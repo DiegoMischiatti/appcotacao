@@ -1,61 +1,75 @@
 package br.edu.infnet.appcotacao;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Cliente;
+import br.edu.infnet.appcotacao.model.domain.Usuario;
 import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
+import br.edu.infnet.appcotacao.model.service.ClienteService;
 import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
 public class ClienteTeste implements ApplicationRunner {
 
+	
+	@Autowired
+
+	private ClienteService clienteService;
+
+	
+	
 	@Override
 	public void run(ApplicationArguments args) {
 		System.out.println("####Cliente");
 		
-		
-		
-		
-		
-		
+		String dir = "c:/dev/";
+		String arq = "clientes.txt";
+
 		try {
-			Cliente cl1 = new Cliente("Cliente 1", "Endereco 1", "email 1");
-			AppImpressao.relatorio("inf cliente cliente 1", cl1);
-		} catch (NomeInvalidoException e) {
-			System.out.println("erro" + e.getMessage());
-		}
-		
-		
-		try {
-			Cliente cl2 = new Cliente("Cliente 2", "Endereco 2", "email 2" );
-			AppImpressao.relatorio("inf cliente cliente 2", cl2);
-		} catch (NomeInvalidoException e) {
-			System.out.println("erro" + e.getMessage());
-		}
-		
-		
-		try {
-			Cliente cl3 = new Cliente("Cliente 3", "Endereco 3", "email 3");
-			AppImpressao.relatorio("inf cliente cliente 3", cl3);
-		} catch (NomeInvalidoException e) {
-			System.out.println("erro" + e.getMessage());
-		}
-		
-		try {
-			Cliente cl4 = new Cliente("Cliente 4", null, "email 4");
-			AppImpressao.relatorio("inf cliente cliente 4", cl4);
-		} catch (NomeInvalidoException e) {
-			System.out.println("erro" + e.getMessage());
-		}
-		
-		try {
-			Cliente cl5 = new Cliente("Cliente 5", "", "email 5");
-			AppImpressao.relatorio("inf cliente cliente 5", cl5);
-		} catch (NomeInvalidoException e) {
-			System.out.println("erro" + e.getMessage());
+
+			try {
+			
+				FileReader fileReader = new FileReader(dir+arq);
+				BufferedReader leitura = new BufferedReader(fileReader);
+				
+				
+				String linha = leitura.readLine();
+				while(linha != null) {
+					
+					String[] campos = linha.split(";");
+					
+					try {
+						Cliente cl1 = new Cliente(campos[0], campos[1], campos[2]);
+						clienteService.incluir(cl1);
+					} catch (NomeInvalidoException e) {
+						System.out.println("erro" + e.getMessage());
+					}
+					
+					
+					linha = leitura.readLine();
+				}
+				
+				leitura.close();
+				fileReader.close();
+				
+				
+			} catch (FileNotFoundException e) {
+				System.out.println("ERRO ARQUIVO NAO EXISTE");
+			} catch (IOException e) {
+				System.out.println("PROBLEMA FECHAMENTO");
+			}
+		} finally {
+			System.out.println("finalizado");
 		}
 	}
-
-}
+}	
+		
+		

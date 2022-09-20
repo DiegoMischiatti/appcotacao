@@ -17,6 +17,7 @@
 	<div class="container mt-3">
 
 		<h3>Cadastramento de usuario</h3>
+		<h4><a href="/usuario">novo usuario</a></h4>
 		<table class="table table-striped">
 			<thead>
 				<tr>
