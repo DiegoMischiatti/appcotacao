@@ -10,6 +10,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Cliente;
@@ -22,6 +23,7 @@ import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
 import br.edu.infnet.appcotacao.model.service.UsuarioService;
 
 @Component
+@Order(1)
 public class UsuarioTeste implements ApplicationRunner{
 	
 	@Autowired

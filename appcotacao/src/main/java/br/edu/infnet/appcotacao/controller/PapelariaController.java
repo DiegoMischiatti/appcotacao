@@ -47,12 +47,19 @@ public class PapelariaController{
      }
 	
 	@GetMapping(value = "/papelaria/{id}/excluir")
-	public String exclusao(@PathVariable Integer id) {
+	public String excluir(@PathVariable Integer id) {
 		
-		papelariaService.excluir(id);
+		try {
+
+			papelariaService.excluir(id);
+		} catch (Exception e) {
+			System.out.println("ERRO" + e.getMessage()); 
+		}
+	
 		
 		return "redirect:/papelaria/lista";
-
-}
+		
+		
+	}
 	
 }

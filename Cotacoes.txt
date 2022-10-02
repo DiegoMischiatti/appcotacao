@@ -1,3 +1,12 @@
-Cotacao 1; false; Cliente 1; Endereco 1; email 1
-Cotacao 2; false; Cliente 2; Endereco 2; email 2
-Cotacao 3; false; Cliente 3; Endereco 3; email 3
+C;Cotacao 1; false; Cliente 1; Endereco 1; email 1
+I;1;10;123;2001;1;true
+C;Cotacao 2; false; Cliente 2; Endereco 2; email 2
+P;1;10;123;plastico;1;true
+C;Cotacao 3; false; Cliente 3; Endereco 3; email 3
+I;2;15;12;2002;2;true
+I;3;120;1;2003;3;false
+P;3;120;1;papel;10;false
+C;Cotacao 4; false; Cliente 4; Endereco 4; email 4
+V;3;120;1;camping;3;false
+I;1;10;123;2001;1;true
+P;2;15;12;madeira;2;true

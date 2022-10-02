@@ -19,6 +19,9 @@
 
 
 		<h3>Classe Cotacao</h3>
+		
+		<h4><a href="/cotacao">nova cotacao</a></h4>
+		
 		<table class="table table-striped">
 			<thead>
 				<tr>

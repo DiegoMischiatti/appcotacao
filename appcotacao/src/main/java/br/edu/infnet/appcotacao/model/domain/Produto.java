@@ -1,16 +1,48 @@
 package br.edu.infnet.appcotacao.model.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import br.edu.infnet.appcotacao.interfaces.IPrinter;
 import br.edu.infnet.appcotacao.model.domain.exceptions.PesoInformaticaInvalidoException;
 import br.edu.infnet.appcotacao.model.domain.exceptions.QuantidadePapelariaInvalidoException;
 import br.edu.infnet.appcotacao.model.domain.exceptions.TamanhoVestuarioInvalidoException;
 
+@Entity
+@Table(name = "TProduto")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Produto implements IPrinter {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String tipo;
 	private float valor;
 	private int codigo;
+	@ManyToMany(mappedBy = "produtos")
+	private List<Cotacao> cotacoes;
+	@ManyToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public abstract float CalcularValordecompra() throws PesoInformaticaInvalidoException,
 			QuantidadePapelariaInvalidoException, TamanhoVestuarioInvalidoException;
@@ -74,4 +106,13 @@ public abstract class Produto implements IPrinter {
 		this.codigo = codigo;
 	}
 
+	public List<Cotacao> getCotacoes() {
+		return cotacoes;
+	}
+
+	public void setCotacoes(List<Cotacao> cotacoes) {
+		this.cotacoes = cotacoes;
+	}
+
+	
 }

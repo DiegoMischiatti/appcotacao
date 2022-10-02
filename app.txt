@@ -4,26 +4,26 @@ A;nome;String;O nome do usuario
 A;email;String;O email do usuario
 A;senha;String;A senha do usuario
 C;Cotacao
-A;nome;String;O nome do usuario
-A;email;String;O email do usuario
-A;senha;String;A senha do usuario
+A;validacao;String;Se a cotacao foi iniciada
+A;data;String;data da cotacao
+A;web;String;se a cotacao foi realizada online
 C;Cliente
 A;nome;String;O nome do usuario
 A;email;String;O email do usuario
 A;senha;String;A senha do usuario
 C;Produto
-A;nome;String;O nome do usuario
-A;email;String;O email do usuario
-A;senha;String;A senha do usuario
+A;tipo;String;O nome do produto
+A;valor;String;O valor do produto
+A;codigo;String;O codigo do produto
 C;Informatica
-A;nome;String;O nome do usuario
-A;email;String;O email do usuario
-A;senha;String;A senha do usuario
+A;ano;String;o ano de fabricacao do produto
+A;peso;String;O peso do produto
+A;wireless;String;se o produto tem wireless ou nao
 C;Papelaria
-A;nome;String;O nome do usuario
-A;email;String;O email do usuario
-A;senha;String;A senha do usuario
+A;material;String;de que o material é feito
+A;quantidade;String;quantas unidades vem na embalagem
+A;validade;String;se o produto tem ou nao data de validade
 C;Vestuario
-A;nome;String;O nome do usuario
-A;email;String;O email do usuario
-A;senha;String;A senha do usuario
+A;classe;String;Para qual ocasiao o produto serve
+A;tamanho;String;Qual o tamanho do produto
+A;infantil;String;Se o produto é ou nao infantil

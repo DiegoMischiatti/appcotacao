@@ -8,14 +8,17 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Informatica;
+import br.edu.infnet.appcotacao.model.domain.Usuario;
 import br.edu.infnet.appcotacao.model.domain.exceptions.PesoInformaticaInvalidoException;
 import br.edu.infnet.appcotacao.model.service.InformaticaService;
 import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
+@Order(3)
 public class InformaticaTeste implements ApplicationRunner {
 
 	@Autowired
@@ -25,6 +28,9 @@ public class InformaticaTeste implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) {
 		System.out.println("####Informatica");
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
 
 		String dir = "c:/dev/";
 		String arq = "produtos.txt";
@@ -52,6 +58,7 @@ public class InformaticaTeste implements ApplicationRunner {
 							i1.setAno(campos[4]);
 							i1.setPeso(Float.valueOf(campos[5]));
 							i1.setWireless(Boolean.valueOf(campos[6]));
+							i1.setUsuario(usuario);
 							informaticaService.incluir(i1);
 							System.out.println("CalcularValordecompra: " + i1.CalcularValordecompra());
 							AppImpressao.relatorio("cotacao informatica 1", i1);

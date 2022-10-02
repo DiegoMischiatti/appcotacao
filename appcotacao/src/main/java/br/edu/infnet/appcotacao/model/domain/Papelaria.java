@@ -1,6 +1,12 @@
 package br.edu.infnet.appcotacao.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.appcotacao.model.domain.exceptions.QuantidadePapelariaInvalidoException;
+
+@Entity
+@Table(name = "TPapelaria")
 
 public class Papelaria extends Produto {
 	

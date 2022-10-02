@@ -8,15 +8,16 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.model.domain.Cliente;
 import br.edu.infnet.appcotacao.model.domain.Usuario;
 import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
 import br.edu.infnet.appcotacao.model.service.ClienteService;
-import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
+@Order(2)
 public class ClienteTeste implements ApplicationRunner {
 
 	
@@ -29,6 +30,10 @@ public class ClienteTeste implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) {
 		System.out.println("####Cliente");
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
 		
 		String dir = "c:/dev/";
 		String arq = "clientes.txt";
@@ -47,8 +52,9 @@ public class ClienteTeste implements ApplicationRunner {
 					String[] campos = linha.split(";");
 					
 					try {
-						Cliente cl1 = new Cliente(campos[0], campos[1], campos[2]);
-						clienteService.incluir(cl1);
+						Cliente cliente = new Cliente(campos[0], campos[1], campos[2]);
+						cliente.setUsuario(usuario);
+						clienteService.incluir(cliente);
 					} catch (NomeInvalidoException e) {
 						System.out.println("erro" + e.getMessage());
 					}

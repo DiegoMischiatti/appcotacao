@@ -4,12 +4,15 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.controller.CotacaoController;
@@ -18,13 +21,17 @@ import br.edu.infnet.appcotacao.model.domain.Cotacao;
 import br.edu.infnet.appcotacao.model.domain.Informatica;
 import br.edu.infnet.appcotacao.model.domain.Papelaria;
 import br.edu.infnet.appcotacao.model.domain.Produto;
+import br.edu.infnet.appcotacao.model.domain.Usuario;
 import br.edu.infnet.appcotacao.model.domain.Vestuario;
 import br.edu.infnet.appcotacao.model.domain.exceptions.ClienteNuloException;
 import br.edu.infnet.appcotacao.model.domain.exceptions.CotacaoSemProdutoException;
 import br.edu.infnet.appcotacao.model.domain.exceptions.NomeInvalidoException;
+import br.edu.infnet.appcotacao.model.domain.exceptions.PesoInformaticaInvalidoException;
 import br.edu.infnet.appcotacao.model.service.CotacaoService;
+import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 @Component
+@Order(6)
 public class CotacaoTeste implements ApplicationRunner {
 
 @Autowired
@@ -33,34 +40,49 @@ public class CotacaoTeste implements ApplicationRunner {
 	
 	@Override
 	public void run(ApplicationArguments args){
-		System.out.println("####Cotacao");
+		
+		try {
+			
+		Usuario usuario = new Usuario();	
+		usuario.setId(1);
+		
+		Cliente cliente = new Cliente();
+		cliente.setId(1);
+			
+			
+		Set<Produto> produtos = new HashSet<Produto>();
 		
 		Informatica i1 = new Informatica();
-		i1.setCodigo(1);
-		i1.setTipo("camera");
-		i1.setValor(500);
-		i1.setAno("2000");
-		i1.setPeso(3.14f);
-		i1.setWireless(false);
+		i1.setId(1);
+		Informatica i2 = new Informatica();
+		i2.setId(2);
+		Informatica i3 = new Informatica();
+		i3.setId(3);
 		
-		Papelaria p1 = new Papelaria();
-		p1.setCodigo(2);
-		p1.setTipo("caneta");
-		p1.setValor(500);
-		p1.setMaterial("plástico");
-		p1.setQuantidade(3.14f);
-		p1.setValidade(false);
-		
-		Vestuario v1 = new Vestuario();
-		v1.setCodigo(3);
-		v1.setTipo("camisa");
-		v1.setValor(657);
-		v1.setClasse("esporte");
-		v1.setTamanho(5f);
-		v1.setInfantil(false);
+		produtos.add(i1);
+		produtos.add(i2);
+		produtos.add(i3);
 		
 		
-		String dir = "c:/dev/";
+			Cotacao cotacao = new Cotacao(cliente, produtos);
+			cotacao.setValidacao ("primeira cotacao");
+			cotacao.setWeb(true);
+			cotacao.setUsuario(usuario);
+			
+			
+			
+			cotacaoService.incluir(cotacao);
+			
+		} catch (ClienteNuloException | CotacaoSemProdutoException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}
+		
+		
+		
+		/*String dir = "c:/dev/";
 		String arq = "Cotacoes.txt";
 
 		try {
@@ -70,34 +92,79 @@ public class CotacaoTeste implements ApplicationRunner {
 				FileReader fileReader = new FileReader(dir+arq);
 				BufferedReader leitura = new BufferedReader(fileReader);
 				
+				Set<Produto> produtos = null;
+				List<Cotacao>cotacao = new ArrayList<Cotacao>();
 				
 				String linha = leitura.readLine();
 				while(linha != null) {
 					
+					String[] campos = linha.split(";");
 					
-					try {
+					switch (campos[0].toUpperCase()) {
+					
+					case "C":
+						try {
+							
+							produtos = new HashSet<Produto>();
+							
+							
+							Cliente cl1 = new Cliente(campos[3], campos[4], campos[5]);
+							
+							Cotacao c1 = new Cotacao(cl1, produtos);
+							c1.setValidacao (campos[1]);
+							c1.setWeb(Boolean.valueOf(campos[2]));
+							
+							cotacao.add(c1);
+							
+						} catch (NomeInvalidoException | ClienteNuloException | CotacaoSemProdutoException e) {
+							System.out.println("erro cotacao" + e.getMessage());
+						} 	
+						break;
+						
+					case "I":
+						Informatica informatica = new Informatica();
+						informatica.setCodigo(Integer.valueOf(campos[1]));
+						informatica.setTipo(campos[2]);
+						informatica.setValor(Float.valueOf(campos[3]));
+						informatica.setAno(campos[4]);
+						informatica.setPeso(Float.valueOf(campos[5]));
+						informatica.setWireless(Boolean.valueOf(campos[6]));
+						produtos.add(informatica);
 						
 						
-						String[] campos = linha.split(";");
+						break;
 						
-						Set<Produto> listaProdutoC1 = new HashSet<Produto>();
-						listaProdutoC1.add(i1);
-						listaProdutoC1.add(p1);
-						listaProdutoC1.add(v1);
+					case "P":
+						Papelaria papelaria = new Papelaria();
+						papelaria.setCodigo(Integer.valueOf(campos[1]));
+						papelaria.setTipo(campos[2]);
+						papelaria.setValor(Float.valueOf(campos[3]));
+						papelaria.setMaterial(campos[4]);
+						papelaria.setQuantidade(Float.valueOf(campos[5]));
+						papelaria.setValidade(Boolean.valueOf(campos[6]));
+						produtos.add(papelaria);
+						break;
 						
-						Cliente cl1 = new Cliente(campos[2], campos[3], campos[4]);
+					case "V":
 						
-						Cotacao c1 = new Cotacao(cl1, listaProdutoC1);
-						c1.setValidacao (campos[0]);
-						c1.setWeb(Boolean.valueOf(campos[1]));
-						cotacaoService.incluir(c1);
-					} catch (NomeInvalidoException | ClienteNuloException | CotacaoSemProdutoException e) {
-						System.out.println("erro cotacao" + e.getMessage());
-					} 	
+						break;
+						
+						
+					default:
+							break;
+					}
 					
 					
 					linha = leitura.readLine();
 				}
+				
+				for(Cotacao c: cotacao) {
+					cotacaoService.incluir(c);
+					System.out.println(">>>>>>>>>>>>>>>>>" + c.getId() );
+					System.out.println(">>>>>>>>>>>>" + c.getCliente().getNome() );
+					System.out.println(">>>>>>>" + c.getProdutos().size() );
+				
+			}
 				
 				leitura.close();
 				fileReader.close();
@@ -117,3 +184,4 @@ public class CotacaoTeste implements ApplicationRunner {
 	
 
 }
+*/

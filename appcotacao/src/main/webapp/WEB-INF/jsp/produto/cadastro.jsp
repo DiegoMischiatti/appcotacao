@@ -4,7 +4,7 @@
 
 
 			<div class="mb-3 mt-3">
-				<label>Tipo:</label> <input type="text" class="form-control"
+				<label>tipo:</label> <input type="text" class="form-control"
 					placeholder="Entre com o nome do produto" name="tipo">
 			</div>
 
@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="mb-3 mt-3">
-				<label> codigo:</label> <input type="text"
+				<label>codigo:</label> <input type="text"
 					class="form-control" placeholder="Entre com o codigo do produto"
 					name="codigo">
 			</div>

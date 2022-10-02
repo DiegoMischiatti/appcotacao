@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appcotacao.controller.VestuarioController;
@@ -22,6 +23,7 @@ import br.edu.infnet.appcotacao.model.test.AppImpressao;
 
 
 @Component
+@Order(5)
 public class VestuarioTeste implements ApplicationRunner {
 
 @Autowired

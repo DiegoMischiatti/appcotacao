@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appcotacao.model.domain.Informatica;
 import br.edu.infnet.appcotacao.model.domain.Usuario;
@@ -19,9 +20,9 @@ public class InformaticaController{
 	private InformaticaService informaticaService;
 	
 	@GetMapping (value = "/informatica/lista")
-	public String telaLista(Model model){
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario){
 		
-		model.addAttribute("listagem", informaticaService.obterLista());
+		model.addAttribute("listagem", informaticaService.obterLista(usuario));
 		
 		return "informatica/lista";
 		
@@ -33,19 +34,27 @@ public class InformaticaController{
      }
 	
 	@PostMapping (value = "/informatica/incluir")
-	public String incluir(Informatica informatica) {
-    	 
+	public String incluir(Informatica informatica, @SessionAttribute ("user")Usuario usuario) {
+		
+		informatica.setUsuario(usuario);
 		informaticaService.incluir(informatica);
 		
 		return "redirect:/informatica/lista";
      }
 	@GetMapping(value = "/informatica/{id}/excluir")
-	public String exclusao(@PathVariable Integer id) {
+	public String excluir(@PathVariable Integer id) {
 		
-		informaticaService.excluir(id);
+		try {
+
+			informaticaService.excluir(id);
+		} catch (Exception e) {
+			System.out.println("ERRO" + e.getMessage()); 
+		}
+	
 		
 		return "redirect:/informatica/lista";
 		
-	}	
+		
+	}
 
 }
