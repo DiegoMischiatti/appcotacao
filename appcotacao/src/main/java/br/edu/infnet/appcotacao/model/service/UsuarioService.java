@@ -22,7 +22,7 @@ public class UsuarioService {
 
 	public Usuario validar(String email, String senha) {
 
-		Usuario usuario = mapaUsuario.get(email);
+		Usuario usuario = usuarioRepository.findByEmail(email);
 
 		if (usuario != null && senha.equals(usuario.getSenha())) {
 			return usuario;

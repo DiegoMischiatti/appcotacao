@@ -8,4 +8,6 @@ import br.edu.infnet.appcotacao.model.domain.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
 
+	Usuario findByEmail(String email);
+
 }
